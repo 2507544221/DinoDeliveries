@@ -36,13 +36,20 @@ logging:
 sky:
   jwt:
     # 设置jwt签名加密时使用的秘钥
-    admin-secret-key: itcast
+    admin-secret-key: codeCreater
     # 设置jwt过期时间
     admin-ttl: 72000000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+    # 用户端token设置
+    user-secret-key: gameplayer
+    user-ttl: 72000000
+    user-token-name: authentication
   alioss:
     endpoint: oss-ap-southeast-1.aliyuncs.com
     access-key-id: LTAI5tHH3Z3rgw9cre1Ladrt
     access-key-secret: WEIbwdURK29HbI0Fw2fhibCFGWlkff
     bucket-name: codecreater
+  wechat:
+    appid: wx7d681d79cbe2919d
+    secret: 124f6870d568b361aaff929dc8fd0a5d
