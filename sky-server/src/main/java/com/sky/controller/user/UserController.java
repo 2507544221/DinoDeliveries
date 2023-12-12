@@ -24,7 +24,7 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/user/user")
 @Slf4j
-@Api("C端用户接口")
+@Api(tags = "C端用户接口")
 public class UserController {
     @Autowired
     private UserService userService;

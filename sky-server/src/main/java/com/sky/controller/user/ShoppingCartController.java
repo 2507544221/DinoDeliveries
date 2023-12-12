@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user/shoppingCart")
-@Api("C端购物车")
+@Api(tags = "C端购物车")
 @Slf4j
 public class ShoppingCartController {
 
