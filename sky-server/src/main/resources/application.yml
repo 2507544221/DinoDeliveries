@@ -60,3 +60,9 @@ sky:
 #    we-chat-pay-cert-file-path:
 #    notify-url:
 #    refund-notify-url:
+
+  shop:
+    address: 成都市成华区二仙桥东三路1号
+  baidu:
+    ak: hekHSG9cXoSLHxx4HODKAGeeiVlGXLWG
+#    sk:
