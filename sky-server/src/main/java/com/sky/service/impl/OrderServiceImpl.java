@@ -188,15 +188,12 @@ public class OrderServiceImpl implements OrderService {
 
         //通过websocket给商家推送消息
         Map map = new HashMap<>();
-        map.put("type",1);
-        map.put("orderId",ordersDB.getId());
-        map.put("content","订单号:"+outTradeNo);
+        map.put("type", 1);
+        map.put("orderId", ordersDB.getId());
+        map.put("content", "订单号:" + outTradeNo);
 
         String json = JSON.toJSONString(map);
         webSocketServer.sendToAllClient(json);
-
-
-
     }
 
     /**
@@ -543,6 +540,29 @@ public class OrderServiceImpl implements OrderService {
         orders.setDeliveryTime(LocalDateTime.now());
 
         orderMapper.update(orders);
+    }
+
+    /**
+     * 客户催单
+     *
+     * @param id
+     */
+    public void reminder(Long id) {
+        // 根据id查询订单
+        Orders ordersDB = orderMapper.getById(id);
+
+        // 校验订单是否存在
+        if (ordersDB == null) {
+            throw new OrderBusinessException(MessageConstant.ORDER_NOT_FOUND);
+        }
+
+        Map map = new HashMap<>();
+        map.put("type",2);
+        map.put("orderId",id);
+        map.put("content","订单号:"+ordersDB.getNumber());
+
+        String json = JSON.toJSONString(map);
+        webSocketServer.sendToAllClient(json);
     }
 
     /**
