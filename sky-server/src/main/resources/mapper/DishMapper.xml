@@ -10,7 +10,7 @@
                 #{updateUser}, #{status})
     </insert>
     <update id="update" parameterType="com.sky.entity.Dish">
-    update dish 
+        update dish
         <set>
             <if test="name != null">name = #{name},</if>
             <if test="categoryId != null">category_id = #{categoryId},</if>
@@ -21,7 +21,7 @@
             <if test="updateTime != null">update_time = #{updateTime},</if>
             <if test="updateUser != null">update_user = #{updateUser},</if>
         </set>
-    where id = #{id}
+        where id = #{id}
     </update>
     <delete id="deleteByIds">
         delete from dish where id in
@@ -52,5 +52,17 @@
             </if>
         </where>
         order by create_time desc
+    </select>
+
+    <select id="countByMap" resultType="java.lang.Integer">
+        select count(id) from dish
+        <where>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+        </where>
     </select>
 </mapper>
