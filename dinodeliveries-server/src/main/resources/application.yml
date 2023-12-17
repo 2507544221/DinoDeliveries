@@ -1,0 +1,68 @@
+server:
+  port: 7777
+#  port: 8080
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: ${dinodeliveries.datasource.driver-class-name}
+      url: jdbc:mysql://${dinodeliveries.datasource.host}:${dinodeliveries.datasource.port}/${dinodeliveries.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${dinodeliveries.datasource.username}
+      password: ${dinodeliveries.datasource.password}
+  redis:
+    host: localhost
+    port: 6379
+    database: 1
+
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.dinodeliveries.entity
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      dinodeliveries:
+        mapper: debug
+        service: info
+        controller: info
+
+dinodeliveries:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key:
+    # 设置jwt过期时间
+    admin-ttl: 72000000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    # 用户端token设置
+    user-secret-key:
+    user-ttl: 72000000
+    user-token-name: authentication
+  alioss:
+    endpoint:
+    access-key-id:
+    access-key-secret:
+    bucket-name:
+  wechat:
+    appid:
+    secret:
+#    mchid:
+#    mch-serial-no:
+#    private-key-file-path:
+#    api-v3-key:
+#    we-chat-pay-cert-file-path:
+#    notify-url:
+#    refund-notify-url:
+
+  shop:
+    address:
+  baidu:
+    ak:
+#    sk:
